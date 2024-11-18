@@ -64,4 +64,29 @@ public class GraphPoetTest {
         String expected = "Goodbye, my cruel world.";
         assertEquals(expected, poet.poem(input));
     }
+    
+    @Test
+    public void testEmptyInput() throws IOException {
+        GraphPoet poet = new GraphPoet(new File("C:/Users/saraa/Downloads/ps2/ps2/test/poet/simple.txt"));
+        String input = ""; // Empty input string
+        String expected = ""; // Expected result for empty input
+        assertEquals(expected, poet.poem(input));
+    }
+
+    @Test
+    public void testSpecialCharacters() throws IOException {
+        GraphPoet poet = new GraphPoet(new File("C:/Users/saraa/Downloads/ps2/ps2/test/poet/special-characters.txt"));
+        String input = "Hello @world!";
+        String expected = "Hello @world!";
+        assertEquals(expected, poet.poem(input));
+    }
+
+    @Test
+    public void testBridgeWordsInMiddle() throws IOException {
+        GraphPoet poet = new GraphPoet(new File("C:/Users/saraa/Downloads/ps2/ps2/test/poet/bridge-middle.txt"));
+        String input = "A quick fox jumps.";
+        String expected = "A quick brown fox jumps."; // Ensures "brown" is added as a bridge word
+        assertEquals(expected, poet.poem(input));
+    }
+
 }
